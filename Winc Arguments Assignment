@@ -1,0 +1,49 @@
+"""Defining the Greet function
+My strategy is to split the string into 3 bits:
+pre <name>, <name> and post <name>
+and Return them with <name> replaced with the parameter name
+This will not work for multiple instances of <name> in greet_template.
+I'm not sure if that is required.
+"""
+
+
+def greet(name, greet_template="Hello, <name>!"):
+    pre_name = greet_template[0 : greet_template.find("<name>")]  # defining pre
+    post_name = greet_template[greet_template.find("<name>") + 6 :]  # defining post
+    return pre_name + name + post_name  # glueing the string back together
+
+
+"""Defining the Force function
+The plan is to create the dictionary and
+return the correct formula, with a rounded g value.
+"""
+
+
+def force(mass, body="earth"):
+    # defining the body-gravity dictionary
+    gravity_body = {
+        "sun": 274,
+        "jupiter": 24.92,
+        "neptune": 11.15,
+        "saturn": 10.44,
+        "earth": 9.798,
+        "uranus": 8.87,
+        "venus": 8.87,
+        "mars": 3.71,
+        "mercury": 3.7,
+        "moon": 1.62,
+        "pluto": 0.58,
+    }
+    return mass * round(gravity_body[body], 1)  # F = m*g
+
+
+"""Defining the Force function
+The plan is to define the gravitational constant
+to make reading easier
+and to return the correct formula
+"""
+
+
+def pull(m1, m2, d):
+    G_constant = 6.674 * 10 ** -11  # Gravity constant
+    return G_constant * (m1 * m2) / (d ** 2)  # F = G × ((m1×m2)/d^2)
